@@ -1,6 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat en Vivo</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .chat-container {
+      display: flex;
+      height: 100vh;
+    }
+    .contacts {
+      width: 25%;
+      border-right: 1px solid #ddd;
+    }
+    .chat-window {
+      width: 75%;
+      padding: 20px;
+    }
+    .message-input {
+      position: fixed;
+      bottom: 0;
+      width: 75%;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Chat en Vivo</a>
+  </nav>
+
+  <div class="chat-container">
+    <div class="contacts p-3">
+      <h4>Contactos</h4>
+      <ul class="list-group">
+        <li class="list-group-item">Contacto 1</li>
+        <li class="list-group-item">Contacto 2</li>
+        <li class="list-group-item">Contacto 3</li>
+      </ul>
+    </div>
+    <div class="chat-window">
+      <div id="chat-messages" class="mb-5">
+        <!-- Los mensajes del chat se cargarán aquí -->
+      </div>
+    </div>
+  </div>
+
+  <div class="message-input d-flex">
+    <input type="text" class="form-control" id="messageInput" placeholder="Escribe tu mensaje...">
+    <button class="btn btn-primary ml-2" id="sendButton">Enviar</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+  
+  <script>
+    const socket = io();
+    // Aquí puedes agregar el código para manejar el envío de mensajes y la interacción con la API REST
+    document.getElementById('sendButton').addEventListener('click', () => {
+      const message = document.getElementById('messageInput').value;
+      if (message) {
+        // Enviar el mensaje a la API REST
+        // ...
+        // Agregar el mensaje al chat
+        const chatMessages = document.getElementById('chat-messages');
+        const newMessage = document.createElement('div');
+        newMessage.className = 'alert alert-secondary';
+        newMessage.textContent = message;
+        chatMessages.appendChild(newMessage);
+        // Limpiar el input
+        document.getElementById('messageInput').value = '';
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -8,4 +94,4 @@
 <body>
     <h1>App de chat con Nodejs</h1>
 </body>
-</html>
+</html> -->

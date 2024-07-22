@@ -4,7 +4,7 @@
   "description": "��#\u0000 \u00007\u0000-\u0000C\u0000l\u0000a\u0000u\u0000d\u0000i\u0000o\u0000-\u0000M\u0000a\u0000r\u0000t\u0000i\u0000n\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon dist/index.js", 
+    "dev": "nodemon dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,5 +18,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "socket.io": "^4.7.5"
-  }
+  },
+  "include": [
+    "./client/index.html"
+  ]
 }
